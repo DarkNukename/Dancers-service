@@ -13,18 +13,18 @@ class DancersView(BaseView):
     def get(self, request, client, client_id):
         params = request.GET
         response = list(Dancers.objects.filter(**params).values())
-        stat = BaseView.send_stat_log(request, client, client_id)
-        if not stat:
-            BaseView.log(log, request, client, client_id)
+        # stat = BaseView.send_stat_log(request, client, client_id)
+        # if not stat:
+        #     BaseView.log(log, request, client, client_id)
         return {'status': 'Success', 'data': response, 'code': 200}
 
     @BaseView.authorization(('admin',))
     def post(self, request, client, client_id):
         data = json.loads(request.body.decode('utf-8'))
         response = Dancers.objects.create(**data).pk
-        stat = BaseView.send_stat_log(request, client, client_id)
-        if not stat:
-            BaseView.log(log, request, client, client_id)
+        # stat = BaseView.send_stat_log(request, client, client_id)
+        # if not stat:
+        #     BaseView.log(log, request, client, client_id)
         return {'status': 'Success', 'data': response, 'code': 200}
 
 class DancerView(BaseView):
@@ -34,9 +34,9 @@ class DancerView(BaseView):
         response = list(Dancers.objects.filter(pk=uuid).values())
         if not response:
             return {'status': 'Failed', 'message': 'Object does not exist', 'code': 404}
-        stat = BaseView.send_stat_log(request, client, client_id)
-        if not stat:
-            BaseView.log(log, request, client, client_id)
+        # stat = BaseView.send_stat_log(request, client, client_id)
+        # if not stat:
+        #     BaseView.log(log, request, client, client_id)
         return {'status': 'Success', 'data': response, 'code': 200}
 
     @BaseView.authorization(('admin', 'anonymous'))
@@ -44,9 +44,9 @@ class DancerView(BaseView):
         data = json.loads(request.body.decode('utf-8'))
         Dancers.objects.filter(pk=uuid).update(**data)
         response = list(Dancers.objects.filter(pk=uuid).values())
-        stat = BaseView.send_stat_log(request, client, client_id)
-        if not stat:
-            BaseView.log(log, request, client, client_id)
+        # stat = BaseView.send_stat_log(request, client, client_id)
+        # if not stat:
+        #     BaseView.log(log, request, client, client_id)
         return {'status': 'Success', 'data': response, 'code': 200}
 
     @BaseView.authorization(('admin',))
