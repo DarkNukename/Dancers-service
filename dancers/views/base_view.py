@@ -14,7 +14,7 @@ import time
 
 from django.conf import settings
 
-r = redis.Redis(os.environ.get("REDIS_URL")) if os.environ.get("DEBUG") else redis.Redis(db=1)
+r = redis.Redis(db=1) if settings.DEBUG else redis.Redis(os.environ.get("REDIS_URL"))
 
 sentry_sdk.init(
     "https://a33c42d90baa410eadb8636b303cb85d@o438046.ingest.sentry.io/5420942",
