@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'diwx4($%d2i@!29nfb6#h+8^14um#2jy8sao4ab@hgw7)j(&%j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['fierce-plains-12493.herokuapp.com', '127.0.0.1']
 
